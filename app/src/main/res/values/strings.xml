@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Restaurant Randomizer</string>
+    <string name="whichCity">Enter a City</string>
+</resources>

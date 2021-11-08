@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/parent"
+    app:cardCornerRadius="7dp"
+    app:cardElevation="7dp"
+    android:layout_margin="5dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:id="@+id/collapsedRelLayout">
+
+            <ImageView
+                android:id="@+id/imgBook"
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:src="@mipmap/ic_launcher"
+                android:layout_margin="1dp"/>
+
+            <TextView
+                android:id="@+id/txtRestaurantName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:layout_toEndOf="@+id/imgBook"
+                android:text="Restaurant Name"
+                android:layout_margin="10dp"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_down_arrow"
+                android:layout_toEndOf="@id/imgBook"
+                android:layout_marginTop="10dp"
+                android:id="@+id/btnDownArrow"
+                android:layout_alignParentEnd="true"/>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</com.google.android.material.card.MaterialCardView>
