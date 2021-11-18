@@ -10,15 +10,20 @@
         android:id="@+id/idIVBack"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="centerCrop"
-        android:src="@color/lightblue_1" />
+        android:scaleType="centerCrop" />
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:text="Login"
+        />
 
     <ImageView
         android:id="@+id/imgHeader"
         android:layout_width="match_parent"
         android:layout_height="300dp"
         android:scaleType="fitXY"
-        android:src="@drawable/bonbon_luna"/>
+        android:src="@drawable/bonbon_luna" />
 
         <LinearLayout
             android:id="@+id/idLLedt"

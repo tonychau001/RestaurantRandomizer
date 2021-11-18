@@ -22,14 +22,14 @@ public class RestaurantRVAdapter extends RecyclerView.Adapter<RestaurantRVAdapte
     private ArrayList<Restaurant> restaurants = new ArrayList<>();
     private Context mContext;
 
-    public RestaurantRVAdapter(Context mContext) {
+    public RestaurantRVAdapter(Context mContext, ArrayList<Restaurant> restaurants) {
         this.mContext = mContext;
-
-        restaurants.add(new Restaurant("89", "Zaz0","https://i.imgur.com/DvpvklR.png"));
-        restaurants.add(new Restaurant("89", "Zaz1","https://i.imgur.com/DvpvklR.png"));
-        restaurants.add(new Restaurant("89", "Zaz2","https://i.imgur.com/DvpvklR.png"));
-        restaurants.add(new Restaurant("89", "Zaz2","https://i.imgur.com/DvpvklR.png"));
-        restaurants.add(new Restaurant("89", "Zaz2","https://i.imgur.com/DvpvklR.png"));
+        this.restaurants = restaurants;
+//        restaurants.add(new Restaurant("89", "Zaz0","https://i.imgur.com/DvpvklR.png"));
+//        restaurants.add(new Restaurant("89", "Zaz1","https://i.imgur.com/DvpvklR.png"));
+//        restaurants.add(new Restaurant("89", "Zaz2","https://i.imgur.com/DvpvklR.png"));
+//        restaurants.add(new Restaurant("89", "Zaz2","https://i.imgur.com/DvpvklR.png"));
+//        restaurants.add(new Restaurant("89", "Zaz2","https://i.imgur.com/DvpvklR.png"));
 
 
     }
