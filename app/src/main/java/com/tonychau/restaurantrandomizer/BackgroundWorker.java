@@ -31,6 +31,7 @@ public class BackgroundWorker extends AsyncTask<String, String, String> {
     protected String doInBackground(String... params) {
         String type = params[0];
         String loginURL = "http://tony-chau.com/login.php";
+        String registerURL = "http://tony-chau.com/register.php";
         if(type.equals("Login")) {
             try {
                 String username = params[1];
@@ -50,7 +51,48 @@ public class BackgroundWorker extends AsyncTask<String, String, String> {
                 bufferedWriter.flush();
                 bufferedWriter.close();
                 outputStream.close();
-                Log.d("TAG", "doInBackground: " + httpURLConnection.getResponseCode());
+
+                InputStream inputStream = httpURLConnection.getInputStream();
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "iso-8859-1"));
+                String result = "";
+                String line = "";
+                while((line = bufferedReader.readLine()) != null) {
+                    result += line;
+                }
+                bufferedReader.close();
+                inputStream.close();
+                httpURLConnection.disconnect();
+                return result;
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else if(type.equals("Register")) {
+            try {
+                String firstName = params[1];
+                String surname = params[2];
+                String age = params[3];
+                String username = params[4];
+                String password = params[5];
+
+                URL url = new URL(registerURL);
+                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+                httpURLConnection.setRequestMethod("POST");
+                httpURLConnection.setDoOutput(true);
+                httpURLConnection.setDoInput(true);
+                OutputStream outputStream = httpURLConnection.getOutputStream();
+
+                BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
+                String postData = URLEncoder.encode("firstName", "UTF-8") + "=" +URLEncoder.encode(firstName, "UTF-8") + "&" +
+                        URLEncoder.encode("surname", "UTF-8") + "=" +URLEncoder.encode(surname, "UTF-8") + "&" +
+                        URLEncoder.encode("age", "UTF-8") + "=" +URLEncoder.encode(age, "UTF-8")+ "&" +
+                        URLEncoder.encode("username", "UTF-8") + "=" +URLEncoder.encode(username, "UTF-8")+ "&" +
+                        URLEncoder.encode("userpass", "UTF-8") + "=" +URLEncoder.encode(password, "UTF-8");
+                bufferedWriter.write(postData);
+                bufferedWriter.flush();
+                bufferedWriter.close();
+                outputStream.close();
 
                 InputStream inputStream = httpURLConnection.getInputStream();
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "iso-8859-1"));
