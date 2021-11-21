@@ -18,20 +18,14 @@
         android:text="Login"
         />
 
-    <ImageView
-        android:id="@+id/imgHeader"
-        android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/bonbon_luna" />
+
 
         <LinearLayout
             android:id="@+id/idLLedt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:weightSum="5"
-            android:layout_below="@+id/imgHeader">
+            android:weightSum="5">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/idTICity"
@@ -40,23 +34,15 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:layout_weight="4.5"
-                android:background="@android:color/transparent"
-                android:hint="@string/whichCity"
-                android:padding="5dp"
-                android:textColorHint="@color/white"
-                app:hintTextColor="@color/white"
-                app:boxStrokeColor="@android:color/transparent">
+                android:padding="5dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/idEdtCity"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@android:color/transparent"
-                    android:importantForAutofill="no"
-                    android:inputType="text"
+                    android:hint="@string/whichCity"
                     android:singleLine="true"
-                    android:textColor="@color/white"
-                    android:textSize="14sp"/>
+                   />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -65,11 +51,12 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_margin="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
                 android:layout_weight="0.5"
-                android:background="@android:color/transparent"
-                android:src="@drawable/ic_search"
-                app:tint="@color/white"/>
+                android:src="@drawable/ic_search" />
 
         </LinearLayout>
 

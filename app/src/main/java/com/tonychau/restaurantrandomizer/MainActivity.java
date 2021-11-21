@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
@@ -20,6 +21,8 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.material.textfield.TextInputEditText;
 
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -48,10 +51,15 @@ public class MainActivity extends AppCompatActivity {
         searchIV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getRestaurantInfo("Boston");
+
+                String city = cityEdt.getText().toString();
+                if(city.isEmpty()) {
+                    Toast.makeText(MainActivity.this, "Please enter city name", Toast.LENGTH_SHORT).show();
+                } else {
+                    getRestaurantInfo(city);
+                }
             }
         });
-        getRestaurantInfo("Boston");
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,8 +71,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void getRestaurantInfo(String cityName) {
-//        String url = "https://documenu.p.rapidapi.com/restaurant/4072702673999819";
-        String url = "https://api.documenu.com/v2/restaurants/zip_code/02111?size=100&amp;page=2";
+        // This one is for per business with business ID
+//        String url = "https://api.yelp.com/v3/businesses/WavvLdfdP6g8aZTtbBQHTw";
+        String url = "https://api.yelp.com/v3/businesses/search?location="+ cityName +"&term=restaurants";
+        Log.d("TAG", "onResponse: " + url.toString());
         RequestQueue requestQueue = Volley.newRequestQueue(MainActivity.this);
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
@@ -72,10 +82,30 @@ public class MainActivity extends AppCompatActivity {
 
                     @Override
                     public void onResponse(JSONObject response) {
-                        Log.d("TAG", "onResponse: " + response.toString());
+                        try {
+                            String total = response.getString("total");
+                            JSONArray businessesObj = response.getJSONArray("businesses");
+                            JSONObject restaurantOne = businessesObj.getJSONObject(3);
+                            Log.d("TAG", "onResponse: " + response.toString());
+                            Log.d("TAG", "onResponse: " + total.toString());
+                            Log.d("TAG", "onResponse: " + restaurantOne.toString());
+
+                            String id = restaurantOne.getString("id");
+                            String name = restaurantOne.getString("name");
+                            String imageUrl = restaurantOne.getString("image_url");
+
 //                        textView.setText("Response: " + response.toString());
-                        restaurantArrayList.add(new Restaurant("TTTT","CCCC", "https://i.imgur.com/DvpvklR.png"));
-                        restaurantRVAdapter.notifyDataSetChanged();
+                            restaurantArrayList.clear();
+                            restaurantArrayList.add(new Restaurant(id, name, imageUrl));
+                            restaurantArrayList.add(new Restaurant(id, name, imageUrl));
+                            restaurantArrayList.add(new Restaurant(id, name, imageUrl));
+                            restaurantArrayList.add(new Restaurant(id, name, imageUrl));
+                            restaurantArrayList.add(new Restaurant(id, name, imageUrl));
+                            restaurantArrayList.add(new Restaurant(id, name, imageUrl));
+                            restaurantRVAdapter.notifyDataSetChanged();
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
                     }
                 }, new Response.ErrorListener() {
 
@@ -84,14 +114,11 @@ public class MainActivity extends AppCompatActivity {
                         // TODO: Handle error
                         Log.d("TAG", "onResponse: FAILED - " + error.toString());
                     }
-                }){
+                }) {
                     @Override
                     public Map<String, String> getHeaders() throws AuthFailureError {
                         Map<String, String>  params = new HashMap<String, String>();
-                        params.put("x-api-key", "a1c3d3ebab7e65307da7a104eff99512");
-                        params.put("x-rapidapi-key", "b8a789798cmsha2cf72d2dc37a90p1f2794jsnf88eae2250d4");
-                        params.put("x-rapidapi-host", "documenu.p.rapidapi.com");
-
+                        params.put("Authorization", "Bearer EDTlBnp0YIVTu0MOPfC0KfxU0Pld1UZbDMye9jhXMvDYN_P27oGoKpTJowehJ_OkmzAWfvHcAVOMUG5LIjDoz3eTiJvskJ2TQj9Z0zPPjI0S0HmClw4WP0Vxy5iJYXYx");
                         return params;
                     }
         };
