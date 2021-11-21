@@ -94,6 +94,9 @@ public class MainActivity extends AppCompatActivity {
                             String name = restaurantOne.getString("name");
                             String imageUrl = restaurantOne.getString("image_url");
 
+
+
+
 //                        textView.setText("Response: " + response.toString());
                             restaurantArrayList.clear();
                             restaurantArrayList.add(new Restaurant(id, name, imageUrl));
