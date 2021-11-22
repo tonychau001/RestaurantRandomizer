@@ -28,6 +28,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -83,28 +84,20 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
-                            String total = response.getString("total");
+                            Random rand = new Random();
+                            int total = Integer.parseInt(response.getString("total"));
                             JSONArray businessesObj = response.getJSONArray("businesses");
-                            JSONObject restaurantOne = businessesObj.getJSONObject(3);
-                            Log.d("TAG", "onResponse: " + response.toString());
-                            Log.d("TAG", "onResponse: " + total.toString());
-                            Log.d("TAG", "onResponse: " + restaurantOne.toString());
-
-                            String id = restaurantOne.getString("id");
-                            String name = restaurantOne.getString("name");
-                            String imageUrl = restaurantOne.getString("image_url");
-
-
-
-
-//                        textView.setText("Response: " + response.toString());
                             restaurantArrayList.clear();
-                            restaurantArrayList.add(new Restaurant(id, name, imageUrl));
-                            restaurantArrayList.add(new Restaurant(id, name, imageUrl));
-                            restaurantArrayList.add(new Restaurant(id, name, imageUrl));
-                            restaurantArrayList.add(new Restaurant(id, name, imageUrl));
-                            restaurantArrayList.add(new Restaurant(id, name, imageUrl));
-                            restaurantArrayList.add(new Restaurant(id, name, imageUrl));
+
+                            for(int i = 0; i < 10; i++) {
+                                JSONObject restaurantOne = businessesObj.getJSONObject(rand.nextInt(20));
+
+                                String id = restaurantOne.getString("id");
+                                String name = restaurantOne.getString("name");
+                                String imageUrl = restaurantOne.getString("image_url");
+
+                                restaurantArrayList.add(new Restaurant(id, name, imageUrl));
+                            }
                             restaurantRVAdapter.notifyDataSetChanged();
                         } catch (JSONException e) {
                             e.printStackTrace();
