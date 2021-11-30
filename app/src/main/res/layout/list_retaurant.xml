@@ -18,11 +18,11 @@
             android:id="@+id/collapsedRelLayout">
 
             <ImageView
-                android:id="@+id/imgBook"
+                android:id="@+id/imgRestaurant"
                 android:layout_width="80dp"
                 android:layout_height="match_parent"
                 android:src="@mipmap/ic_launcher"
-                android:layout_margin="1dp"/>
+                android:layout_margin="5dp"/>
 
             <TextView
                 android:id="@+id/txtRestaurantName"
@@ -30,18 +30,29 @@
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
                 android:textSize="16sp"
-                android:layout_toEndOf="@+id/imgBook"
+                android:layout_toEndOf="@+id/imgRestaurant"
                 android:text="Restaurant Name"
                 android:layout_margin="10dp"/>
 
             <ImageView
+                android:id="@+id/idIVYelpStars"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_down_arrow"
-                android:layout_toEndOf="@id/imgBook"
+                android:src="@mipmap/stars_small_5"
+                android:layout_toEndOf="@+id/imgRestaurant"
+                android:layout_below="@id/txtRestaurantName"
+                android:layout_marginStart="10dp" />
+
+            <TextView
+                android:id="@+id/idTVCruisineType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/imgRestaurant"
+                android:layout_below="@+id/idIVYelpStars"
                 android:layout_marginTop="10dp"
-                android:id="@+id/btnDownArrow"
-                android:layout_alignParentEnd="true"/>
+                android:layout_marginStart="10dp"
+                android:text="$$$$$ - Cruisine"/>
+
 
         </RelativeLayout>
 

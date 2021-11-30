@@ -3,11 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/TC/Desktop/tonychau001/RestaurantRandomizer/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.15625" />
         <entry key="..\:/Users/TC/Desktop/tonychau001/RestaurantRandomizer/app/src/main/res/drawable/background.xml" value="0.24473684210526317" />
+        <entry key="..\:/Users/TC/Desktop/tonychau001/RestaurantRandomizer/app/src/main/res/drawable/customborder.xml" value="0.1069078947368421" />
         <entry key="..\:/Users/TC/Desktop/tonychau001/RestaurantRandomizer/app/src/main/res/layout/activity_login_page.xml" value="0.16" />
         <entry key="..\:/Users/TC/Desktop/tonychau001/RestaurantRandomizer/app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="..\:/Users/TC/Desktop/tonychau001/RestaurantRandomizer/app/src/main/res/layout/activity_registar.xml" value="0.2" />
-        <entry key="..\:/Users/TC/Desktop/tonychau001/RestaurantRandomizer/app/src/main/res/layout/list_retaurant.xml" value="0.1" />
+        <entry key="..\:/Users/TC/Desktop/tonychau001/RestaurantRandomizer/app/src/main/res/layout/list_retaurant.xml" value="0.18" />
+        <entry key="..\:/Users/TC/Desktop/tonychau001/RestaurantRandomizer/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.15625" />
       </map>
     </option>
   </component>

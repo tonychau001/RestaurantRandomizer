@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
 
         initViews();
 
-        String url = "http://my-json-feed";
+        getRestaurantInfo("Boston");
 
         searchIV.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,13 +62,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        btnLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, LoginPageActivity.class);
-                startActivity(intent);
-            }
-        });
+//        btnLogin.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(MainActivity.this, LoginPageActivity.class);
+//                startActivity(intent);
+//            }
+//        });
     }
 
     private void getRestaurantInfo(String cityName) {
@@ -95,8 +95,11 @@ public class MainActivity extends AppCompatActivity {
                                 String id = restaurantOne.getString("id");
                                 String name = restaurantOne.getString("name");
                                 String imageUrl = restaurantOne.getString("image_url");
+                                String yelpStars = restaurantOne.getString("rating");
+                                String cruisineType = restaurantOne.getString("price") + " - " +
+                                        restaurantOne.getJSONArray("categories").getJSONObject(0).getString("alias");
 
-                                restaurantArrayList.add(new Restaurant(id, name, imageUrl));
+                                restaurantArrayList.add(new Restaurant(id, name, imageUrl, yelpStars, cruisineType));
                             }
                             restaurantRVAdapter.notifyDataSetChanged();
                         } catch (JSONException e) {
@@ -128,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
         cityEdt = findViewById(R.id.idEdtCity);
         searchIV = findViewById(R.id.idIVSearch);
         restaurantRV = findViewById(R.id.idRvRestaurant);
-        btnLogin = findViewById(R.id.btnLogin);
+//        btnLogin = findViewById(R.id.btnLogin);
 
         restaurantArrayList = new ArrayList<>();
         restaurantRVAdapter = new RestaurantRVAdapter(this, restaurantArrayList);

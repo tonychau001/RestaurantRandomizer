@@ -6,13 +6,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -25,13 +25,6 @@ public class RestaurantRVAdapter extends RecyclerView.Adapter<RestaurantRVAdapte
     public RestaurantRVAdapter(Context mContext, ArrayList<Restaurant> restaurants) {
         this.mContext = mContext;
         this.restaurants = restaurants;
-//        restaurants.add(new Restaurant("89", "Zaz0","https://i.imgur.com/DvpvklR.png"));
-//        restaurants.add(new Restaurant("89", "Zaz1","https://i.imgur.com/DvpvklR.png"));
-//        restaurants.add(new Restaurant("89", "Zaz2","https://i.imgur.com/DvpvklR.png"));
-//        restaurants.add(new Restaurant("89", "Zaz2","https://i.imgur.com/DvpvklR.png"));
-//        restaurants.add(new Restaurant("89", "Zaz2","https://i.imgur.com/DvpvklR.png"));
-
-
     }
 
     @NonNull
@@ -45,13 +38,43 @@ public class RestaurantRVAdapter extends RecyclerView.Adapter<RestaurantRVAdapte
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Log.d("TAG", "onBindViewHolder: Called");
         holder.txtName.setText(restaurants.get(position).getName());
-//        Glide.with(mContext)
-//                .asBitmap()
-//                .load(restaurants.get(position).getImageUrl())
-//                .dontAnimate()
-//                .into(holder.imgBook);
+        Picasso.get().load(restaurants.get(position).getImageUrl()).into(holder.imgRestaurant);
 
-        Picasso.get().load(restaurants.get(position).getImageUrl()).into(holder.imgBook);
+        switch(restaurants.get(position).getYelpStars()) {
+            case "0":
+                holder.yelpStars.setImageResource(R.mipmap.stars_small_0);
+                break;
+            case "1":
+                holder.yelpStars.setImageResource(R.mipmap.stars_small_1);
+                break;
+            case "1.5":
+                holder.yelpStars.setImageResource(R.mipmap.stars_small_1_half);
+                break;
+            case "2":
+                holder.yelpStars.setImageResource(R.mipmap.stars_small_2);
+                break;
+            case "2.5":
+                holder.yelpStars.setImageResource(R.mipmap.stars_small_2_half);
+                break;
+            case "3":
+                holder.yelpStars.setImageResource(R.mipmap.stars_small_3);
+                break;
+            case "3.5":
+                holder.yelpStars.setImageResource(R.mipmap.stars_small_3_half);
+                break;
+            case "4":
+                holder.yelpStars.setImageResource(R.mipmap.stars_small_4);
+                break;
+            case "4.5":
+                holder.yelpStars.setImageResource(R.mipmap.stars_small_4_half);
+                break;
+            case "5":
+                holder.yelpStars.setImageResource(R.mipmap.stars_small_5);
+                break;
+            default:
+                break;
+        }
+        holder.cruisineType.setText(restaurants.get(position).getName());
     }
 
     @Override
@@ -61,15 +84,16 @@ public class RestaurantRVAdapter extends RecyclerView.Adapter<RestaurantRVAdapte
 
     public class ViewHolder extends RecyclerView.ViewHolder{
         private CardView parent;
-        private ImageView imgBook;
-        private TextView txtName;
-
+        private ImageView imgRestaurant, yelpStars;
+        private TextView txtName, cruisineType;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             parent = itemView.findViewById(R.id.parent);
-            imgBook = itemView.findViewById(R.id.imgBook);
+            imgRestaurant = itemView.findViewById(R.id.imgRestaurant);
             txtName = itemView.findViewById(R.id.txtRestaurantName);
+            yelpStars = itemView.findViewById(R.id.idIVYelpStars);
+            cruisineType = itemView.findViewById(R.id.idTVCruisineType);
         }
     }
 }
