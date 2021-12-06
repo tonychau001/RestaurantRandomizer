@@ -2,13 +2,14 @@
 
 Write a short project description here
 
+
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
 ### Prerequisites
 
-The things you'll need in order to use the app and how to install them
+This app is currently only in the Google Play Store. It is currently unavailable in the Apple Store.
 
 ```
 Give examples
