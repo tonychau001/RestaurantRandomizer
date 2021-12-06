@@ -10,8 +10,8 @@ import android.widget.EditText;
 
 public class LoginPageActivity extends AppCompatActivity {
 
-    EditText edtUsername, edtPassword;
-    Button btnLogin, btnLoginRegister;
+    private EditText edtUsername, edtPassword;
+    private Button btnLogin, btnLoginRegister;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +32,7 @@ public class LoginPageActivity extends AppCompatActivity {
 
                 BackgroundWorker backgroundWorker = new BackgroundWorker(LoginPageActivity.this);
                 backgroundWorker.execute(type, username, password);
+                // TODO: If signed in, go to UserActivity.
             }
         });
         btnLoginRegister.setOnClickListener(new View.OnClickListener() {

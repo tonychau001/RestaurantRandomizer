@@ -16,6 +16,9 @@
         android:theme="@style/Theme.RestaurantRandomizer"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".UserActivity"
+            android:exported="false" />
+        <activity
             android:name=".RegisterActivity"
             android:exported="false" />
         <activity

@@ -1,0 +1,13 @@
+TODO.TXT
+
+TODO - Creating a login state that can then view the favorites and history column
+TODO - Creating history, favorite and restaurant activity pages.
+TODO - Enable the GPS feature to grab initial location.
+TODO - Hashing username and passwords. Less Important.
+TODO - Eliminate double restaurants
+TODO - Adding single big box for TOP PICK.
+TODO - Look at some UI for ideas, ex dribble.io
+TODO - Change color theme
+TODO - Eliminate top bar
+TODO - Put horizontal scroll for filter.
+TODO - Add info to ReadME.md in github

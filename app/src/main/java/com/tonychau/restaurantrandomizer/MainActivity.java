@@ -1,5 +1,7 @@
 package com.tonychau.restaurantrandomizer;
 
+import static com.tonychau.restaurantrandomizer.UserActivity.LOGGED_IN;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -9,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -20,6 +23,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.material.textfield.TextInputEditText;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -33,9 +37,10 @@ import java.util.Random;
 public class MainActivity extends AppCompatActivity {
 
     private TextInputEditText cityEdt;
-    private ImageView searchIV;
+    private ImageView searchIV, idIVAccountBox, imgWinnerRestaurant, idIVWinnerYelpStars;
     private RecyclerView restaurantRV;
     private Button btnLogin;
+    private TextView txtWinnerRestaurantName, idTVWinnerCruisineType;
 
     private RestaurantRVAdapter restaurantRVAdapter;
     private ArrayList<Restaurant> restaurantArrayList;
@@ -62,13 +67,19 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-//        btnLogin.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(MainActivity.this, LoginPageActivity.class);
-//                startActivity(intent);
-//            }
-//        });
+        idIVAccountBox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // TODO: If logged in, go to UserActivity. Else, LoginPageActivity.
+                if(LOGGED_IN) {
+                    Intent intent = new Intent(MainActivity.this, UserActivity.class);
+                    startActivity(intent);
+                } else {
+                    Intent intent = new Intent(MainActivity.this, LoginPageActivity.class);
+                    startActivity(intent);
+                }
+            }
+        });
     }
 
     private void getRestaurantInfo(String cityName) {
@@ -89,6 +100,15 @@ public class MainActivity extends AppCompatActivity {
                             JSONArray businessesObj = response.getJSONArray("businesses");
                             restaurantArrayList.clear();
 
+                            // THIS is the winner BOX
+                            JSONObject restaurantPick = businessesObj.getJSONObject(rand.nextInt(20));
+                            txtWinnerRestaurantName.setText(restaurantPick.getString("name"));
+                            String winnerCrusineType = restaurantPick.getString("price") + " - " +
+                                    restaurantPick.getJSONArray("categories").getJSONObject(0).getString("alias");
+                            idTVWinnerCruisineType.setText(winnerCrusineType);
+                            Picasso.get().load(restaurantPick.getString("image_url")).into(imgWinnerRestaurant);
+
+                            // This is all the other restaurants.
                             for(int i = 0; i < 10; i++) {
                                 JSONObject restaurantOne = businessesObj.getJSONObject(rand.nextInt(20));
 
@@ -131,7 +151,12 @@ public class MainActivity extends AppCompatActivity {
         cityEdt = findViewById(R.id.idEdtCity);
         searchIV = findViewById(R.id.idIVSearch);
         restaurantRV = findViewById(R.id.idRvRestaurant);
-//        btnLogin = findViewById(R.id.btnLogin);
+        idIVAccountBox = findViewById(R.id.idIVAccountBox);
+
+        imgWinnerRestaurant = findViewById(R.id.imgWinnerRestaurant);
+        txtWinnerRestaurantName = findViewById(R.id.txtWinnerRestaurantName);
+        idIVWinnerYelpStars = findViewById(R.id.idIVWinnerYelpStars);
+        idTVWinnerCruisineType = findViewById(R.id.idTVWinnerCruisineType);
 
         restaurantArrayList = new ArrayList<>();
         restaurantRVAdapter = new RestaurantRVAdapter(this, restaurantArrayList);

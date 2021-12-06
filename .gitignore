@@ -83,3 +83,6 @@ lint/generated/
 lint/outputs/
 lint/tmp/
 # lint/reports/
+
+# TODO.TXT
+app/src/main/java/com/tonychau/restaurantrandomizer/TODO.TXT

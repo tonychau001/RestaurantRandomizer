@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.Switch;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -30,7 +29,7 @@ public class RestaurantRVAdapter extends RecyclerView.Adapter<RestaurantRVAdapte
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_retaurant, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_restaurant, parent, false);
         return new ViewHolder(view);
     }
 
@@ -74,7 +73,7 @@ public class RestaurantRVAdapter extends RecyclerView.Adapter<RestaurantRVAdapte
             default:
                 break;
         }
-        holder.cruisineType.setText(restaurants.get(position).getName());
+        holder.cruisineType.setText(restaurants.get(position).getCruisineType());
     }
 
     @Override
