@@ -1,25 +1,23 @@
 # RestaurantRandomizer
 
-Write a short project description here
+This project is under construction. The idea behind it is simple. How many times have
+your partner and/or yourself being undecisive about where to eat? No one have time for those
+kind of arguments, and that is what this app is for! You could enter a city or zipcode, and
+it will randomly choose a restaurant for you.
 
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
+Not yet available.
 
 ### Prerequisites
 
-This app is currently only in the Google Play Store. It is currently unavailable in the Apple Store.
+Not yet available.
 
-```
-Give examples
-```
 
 ### How to use
 
-A step by step guide on how to use the app's features
-
-End with a few screenshots
+Not yet available.
 
 ## Built with
 
