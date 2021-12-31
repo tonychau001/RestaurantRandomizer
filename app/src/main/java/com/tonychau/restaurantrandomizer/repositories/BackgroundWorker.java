@@ -1,4 +1,4 @@
-package com.tonychau.restaurantrandomizer;
+package com.tonychau.restaurantrandomizer.repositories;
 
 import android.app.AlertDialog;
 import android.content.Context;

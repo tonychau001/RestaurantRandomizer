@@ -1,8 +1,10 @@
-package com.tonychau.restaurantrandomizer;
+package com.tonychau.restaurantrandomizer.views;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.tonychau.restaurantrandomizer.R;
 
 public class UserActivity extends AppCompatActivity {
 

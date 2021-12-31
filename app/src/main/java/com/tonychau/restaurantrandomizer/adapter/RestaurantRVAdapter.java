@@ -1,4 +1,4 @@
-package com.tonychau.restaurantrandomizer;
+package com.tonychau.restaurantrandomizer.adapter;
 
 import android.content.Context;
 import android.util.Log;
@@ -13,15 +13,18 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
+import com.tonychau.restaurantrandomizer.R;
+import com.tonychau.restaurantrandomizer.models.Restaurant;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class RestaurantRVAdapter extends RecyclerView.Adapter<RestaurantRVAdapter.ViewHolder> {
 
-    private ArrayList<Restaurant> restaurants = new ArrayList<>();
+    private List<Restaurant> restaurants = new ArrayList<>();
     private Context mContext;
 
-    public RestaurantRVAdapter(Context mContext, ArrayList<Restaurant> restaurants) {
+    public RestaurantRVAdapter(Context mContext, List<Restaurant> restaurants) {
         this.mContext = mContext;
         this.restaurants = restaurants;
     }
@@ -38,7 +41,6 @@ public class RestaurantRVAdapter extends RecyclerView.Adapter<RestaurantRVAdapte
         Log.d("TAG", "onBindViewHolder: Called");
         holder.txtName.setText(restaurants.get(position).getName());
         Picasso.get().load(restaurants.get(position).getImageUrl()).into(holder.imgRestaurant);
-
         switch(restaurants.get(position).getYelpStars()) {
             case "0":
                 holder.yelpStars.setImageResource(R.mipmap.stars_small_0);

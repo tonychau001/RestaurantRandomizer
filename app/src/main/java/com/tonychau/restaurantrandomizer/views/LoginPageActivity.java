@@ -1,4 +1,4 @@
-package com.tonychau.restaurantrandomizer;
+package com.tonychau.restaurantrandomizer.views;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
+import com.tonychau.restaurantrandomizer.R;
+import com.tonychau.restaurantrandomizer.repositories.BackgroundWorker;
 
 public class LoginPageActivity extends AppCompatActivity {
 

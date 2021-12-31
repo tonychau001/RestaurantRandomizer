@@ -1,4 +1,4 @@
-package com.tonychau.restaurantrandomizer;
+package com.tonychau.restaurantrandomizer.models;
 
 public class Restaurant {
     private String id;

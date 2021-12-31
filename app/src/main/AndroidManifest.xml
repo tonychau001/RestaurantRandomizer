@@ -16,16 +16,16 @@
         android:theme="@style/Theme.RestaurantRandomizer"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".UserActivity"
+            android:name=".views.UserActivity"
             android:exported="false" />
         <activity
-            android:name=".RegisterActivity"
+            android:name=".views.RegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".LoginPageActivity"
+            android:name=".views.LoginPageActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".views.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
